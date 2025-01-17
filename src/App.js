@@ -1,28 +1,28 @@
-import React, { useState } from 'react'; // Importiert React und den useState-Hook
-import './App.css'; // Importiert die CSS-Datei für das Styling
+import React, { useState } from 'react'; // Importiert React und useState-Hook
+import './App.css'; // Importiert CSS-Datei für Styling
 
 // Funktionale Komponente `App`
 function App() {
-  // Zustände für die To-Do App
+  // Zustände für To-Do App
   const [todos, setTodos] = useState([
     { id: 1, text: "Kaffee kaufen", completed: false }, // Beispiel-To-Do
   ]);
-  const [text, setText] = useState(''); // Zustand für das Texteingabefeld der To-Do App
+  const [text, setText] = useState(''); // Zustand für Texteingabefeld To-Do
 
-  // Zustände für den Feierabend-Rechner
-  const [startTime, setStartTime] = useState(''); // Zustand für die Startzeit (HH:MM)
-  const [endTime, setEndTime] = useState(''); // Zustand für die berechnete Feierabendzeit
+  // Zustände für Feierabend-Rechner
+  const [startTime, setStartTime] = useState(''); // Zustand für Startzeit (HH:MM)
+  const [endTime, setEndTime] = useState(''); // Zustand für berechnete Feierabendzeit
   const [error, setError] = useState(''); // Zustand für Fehlermeldungen
-  const [timer, setTimer] = useState(15); // Zustand für den Timer (Standard: 15 Minuten)
-  const [isTimerRunning, setIsTimerRunning] = useState(false); // Zustand, ob der Timer läuft
+  const [timer, setTimer] = useState(15); // Zustand für Timer (Standard: 15 Minuten)
+  const [isTimerRunning, setIsTimerRunning] = useState(false); // Zustand, ob Timer läuft
   const [timeRemaining, setTimeRemaining] = useState(timer * 60); // Zustand für verbleibende Zeit in Sekunden
-  const [intervalId, setIntervalId] = useState(null); // Zustand für die Interval-ID (zum Stoppen des Timers)
+  const [intervalId, setIntervalId] = useState(null); // Zustand für Interval-ID (zum Stoppen des Timers)
   const [customTime, setCustomTime] = useState(''); // Zustand für benutzerdefinierte Timerzeit
 
-  // Funktion, um den "erledigt"-Status einer To-Do zu toggeln
+  // Funktion, um "erledigt"-Status einer To-Do zu toggeln
   const toggleCompleted = (todo) => {
     const updatedTodos = todos.map((current) => {
-      // Überprüfen, ob das aktuelle To-Do dem geklickten entspricht
+      // Überprüfen, ob aktuelle To-Do dem geklickten entspricht
       if (current === todo) {
         return { ...current, completed: !current.completed }; // Status umschalten
       }
@@ -31,17 +31,17 @@ function App() {
     setTodos(updatedTodos); // Aktualisierte Liste setzen
   };
 
-  // Funktion, um ein neues To-Do zu erstellen
+  // Funktion, um neues To-Do zu erstellen
   const createTodo = () => {
-    if (!text.trim()) return; // Abbrechen, wenn der Text leer ist
-    const id = Math.random(); // Generiert eine zufällige ID
+    if (!text.trim()) return; // Abbrechen, wenn Text leer ist
+    const id = Math.random(); // Generiert zufällige ID
     setTodos([...todos, { id, text, completed: false }]); // Neues To-Do zur Liste hinzufügen
     setText(''); // Texteingabefeld zurücksetzen
   };
 
-  // Funktion zur Berechnung der Feierabendzeit
+  // Funktion zur Berechnung Feierabendzeit
   const calculateEndTime = () => {
-    const timeRegex = /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/; // Regex zur Überprüfung der Startzeit
+    const timeRegex = /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/; // Regex zur Überprüfung Startzeit
     if (!timeRegex.test(startTime)) {
       setError('Bitte gib eine gültige Startzeit im Format HH:MM ein.'); // Fehler setzen
       setEndTime(''); // Endzeit zurücksetzen
@@ -65,7 +65,7 @@ function App() {
     setError(''); // Fehler zurücksetzen
   };
 
-  // Funktion, um den Timer zu starten
+  // Funktion, um Timer zu starten
   const startTimer = () => {
     if (intervalId) return; // Verhindert mehrfaches Starten
 
@@ -84,7 +84,7 @@ function App() {
     setIsTimerRunning(true); // Timer-Status setzen
   };
 
-  // Funktion, um den Timer zu pausieren
+  // Funktion, um Timer zu pausieren
   const pauseTimer = () => {
     if (intervalId) {
       clearInterval(intervalId); // Timer stoppen
@@ -93,7 +93,7 @@ function App() {
     }
   };
 
-  // Funktion, um den Timer zurückzusetzen
+  // Funktion, um Timer zurückzusetzen
   const resetTimer = () => {
     if (intervalId) {
       clearInterval(intervalId); // Timer stoppen
@@ -103,7 +103,7 @@ function App() {
     setIsTimerRunning(false); // Timer-Status setzen
   };
 
-  // Funktion, um die benutzerdefinierte Timerzeit zu ändern
+  // Funktion, um benutzerdefinierte Timerzeit zu ändern
   const handleCustomTimeChange = (e) => {
     const minutes = parseInt(e.target.value); // Eingabe in eine Zahl umwandeln
     if (!isNaN(minutes) && minutes > 0) {
@@ -116,7 +116,7 @@ function App() {
   // JSX-Teil der App
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h1>Feierabend Rechner & To-Do App</h1> {/* Überschrift der App */}
+      <h1>To-Do App & Feierabend Rechner & Pausentimer</h1> {/* Überschrift App */}
       <div style={{ display: 'flex', justifyContent: 'space-between' }}> {/* Layout für zwei Bereiche */}
         
         {/* To-Do App Bereich */}
@@ -126,7 +126,7 @@ function App() {
             {todos.map((todo) => (
               <li key={todo.id}>
                 <label
-                  htmlFor={`todo-${todo.id}`} // Das Label ist mit der Checkbox verknüpft
+                  htmlFor={`todo-${todo.id}`} // Label ist mit Checkbox verknüpft
                   style={{
                     textDecoration: todo.completed ? "line-through" : "",
                   }}
