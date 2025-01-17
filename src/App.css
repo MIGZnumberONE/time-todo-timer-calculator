@@ -1,0 +1,125 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Generelle Stile für die App */
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Abstand zwischen Elementen */
+.spacing {
+  margin-top: 20px; /* Abstand oberhalb */
+  margin-bottom: 20px; /* Abstand unterhalb */
+}
+
+.timer-controls button {
+  margin: 0 10px; /* Abstand zwischen Buttons */
+}
+
+/* Fehlernachricht */
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+div {
+  max-width: 90%; /* Passt sich kleineren Bildschirmen an */
+  margin: 50px auto;
+}
+
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #45a049;
+  --background-color: #f4f7fa;
+  --text-color: #333;
+  --completed-task-color: #999;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+h1 {
+  color: var(--primary-color);
+}
+
+button {
+  background-color: var(--primary-color);
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+button:focus,
+input[type="text"]:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+li {
+  transition: background-color 0.3s ease;
+}
+li:hover {
+  background-color: #e8e8e8;
+}
+
+button.reset {
+  background-color: #f44336; /* Rot */
+}
+
+button.reset:hover {
+  background-color: #d32f2f; /* Dunklerer Rotton */
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Reduzierte Schriftgröße */
+  }
+
+  h1 {
+    font-size: 2rem; /* Kleinere Überschrift */
+  }
+}
+
+div {
+  margin-bottom: 20px; /* Abstand zwischen den Abschnitten */
+}
